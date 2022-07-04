@@ -1,0 +1,9 @@
+.loginpage {
+    display:flex;
+    flex-direction: column;
+    gap: 30px;
+    background: linear-gradient(to top left, rgba(13, 98, 13, 0.669), violet);
+    padding: 30px;
+    min-width: 400px;
+    border-radius: 15px;
+}
