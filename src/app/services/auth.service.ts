@@ -16,13 +16,22 @@ export class AuthService {
     return new Promise((res, rej) => {
       this.http.post('https://prac-wyt-opr-backend.herokuapp.com/api/login', { email, password })
         .subscribe((data: any) => {
-          if (data.accessToken) {
-            this.LocalStorageService.setValue('accessToken', data.accessToken)
+          if (data.accesToken) {
+            this.LocalStorageService.setValue('accessToken', data.accesToken)
             res(true);
           }
         }, err => rej(err.error)
         )
 
+    })
+  }
+
+  validateUser() {
+    return new Promise((res, rej) => {
+      this.http.get('https://prac-wyt-opr-backend.herokuapp.com/api/validate').subscribe(
+        () => res(true),
+        (err) => rej(err.status == 200)
+      )
     })
   }
 

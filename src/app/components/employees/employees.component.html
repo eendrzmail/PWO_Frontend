@@ -1,0 +1,45 @@
+<table mat-table [dataSource]="TableData" matSort (matSortChange)="announceSortChange($event)"
+    class="mat-elevation-z8">
+
+  <!-- Position Column -->
+  <ng-container matColumnDef="imie">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by Imie">
+      Imię
+    </th>
+    <td mat-cell *matCellDef="let element"> {{element.imie}} </td>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="nazwisko">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by name">
+      Nazwisko
+    </th>
+    <td mat-cell *matCellDef="let element"> {{element.nazwisko}} </td>
+  </ng-container>
+
+  <!-- Weight Column -->
+  <ng-container matColumnDef="msc_pracy">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by weight">
+      Miesiące pracy
+    </th>
+    <td mat-cell *matCellDef="let element"> {{element.msc_pracy}} </td>
+  </ng-container>
+
+  <!-- Symbol Column -->
+  <ng-container matColumnDef="nazwa">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by symbol">
+      Stanowisko
+    </th>
+    <td mat-cell *matCellDef="let element"> {{element.nazwa}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="status">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by symbol">
+      Status
+    </th>
+    <td mat-cell *matCellDef="let element"> {{element.status}} </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
