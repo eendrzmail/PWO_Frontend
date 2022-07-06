@@ -13,6 +13,10 @@ import { MaterialModule } from 'src/material/material.module';
 import { FormsModule } from '@angular/forms';
 import { EmployeesComponent } from './components/employees/employees.component';
 import { PositionsComponent } from './components/positions/positions.component';
+import { AddPositionComponent } from './components/positions/components/add-position/add-position.component';
+import { PositionComponent } from './components/positions/components/position/position.component';
+import { AddEmployeeComponent } from './components/employees/components/add-employee/add-employee.component';
+import { EditEmployeeComponent } from './components/employees/components/edit-employee/edit-employee.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +24,11 @@ import { PositionsComponent } from './components/positions/positions.component';
     LoginComponent,
     DashboardComponent,
     EmployeesComponent,
-    PositionsComponent
+    PositionsComponent,
+    AddPositionComponent,
+    PositionComponent,
+    AddEmployeeComponent,
+    EditEmployeeComponent
   ],
   imports: [
     BrowserModule,

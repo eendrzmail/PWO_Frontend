@@ -1,0 +1,32 @@
+<div class="position" *ngIf="employee">
+    <mat-form-field>
+        <input matInput placeholder="Nazwa" [(ngModel)]="this.employee.imie">
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput placeholder="Nazwa" [(ngModel)]="this.employee.nazwisko">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+    <mat-label>Stanowisko</mat-label>
+    <mat-select [(ngModel)]="employee.id_stanowiska">
+        <mat-option *ngFor="let position of allPositions$ | async" [value]="position.id">
+        {{position.nazwa}}
+        </mat-option>
+    </mat-select>
+    </mat-form-field>
+
+    <mat-slide-toggle [(ngModel)]="employee.status">
+        <ng-container *ngIf="employee.status; else elseTemplate">
+            Aktywny
+        </ng-container>
+        <ng-template #elseTemplate>
+            Nieaktywny
+        </ng-template>
+    </mat-slide-toggle>
+
+
+    <div class="buttons">
+        <button mat-raised-button routerLink="/employees">Wróć</button>
+        <button mat-raised-button (click)="updateEmployee()" >Zapisz</button>
+    </div>
+</div>

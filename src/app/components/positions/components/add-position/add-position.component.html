@@ -1,0 +1,17 @@
+<h1 mat-dialog-title>Dodaj Stanowisko</h1>
+<div mat-dialog-content>
+  <p>Nazwa</p>
+  <mat-form-field appearance="fill">
+    <mat-label>Nazwa</mat-label>
+    <input matInput [(ngModel)]="position.nazwa" placeholder="Nazwa">
+  </mat-form-field>
+  <p>Pensja</p>
+  <mat-form-field appearance="fill">
+    <mat-label>Pensja</mat-label>
+    <input matInput [(ngModel)]="position.podstawa" placeholder="Pensja" type="number">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Anuluj</button>
+  <button mat-raised-button color="warn" [mat-dialog-close]="position" cdkFocusInitial>Dodaj</button>
+</div>

@@ -1,8 +1,11 @@
+import { AddEmployeeComponent } from './components/add-employee/add-employee.component';
 import { EmployeesService } from './../../services/employees.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort, Sort } from '@angular/material/sort';
 import { LiveAnnouncer } from '@angular/cdk/a11y';
+import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 
 @Component({
@@ -13,19 +16,25 @@ import { LiveAnnouncer } from '@angular/cdk/a11y';
 export class EmployeesComponent implements OnInit {
   constructor(
     private employeeService: EmployeesService,
-    private _liveAnnouncer: LiveAnnouncer
+    private _liveAnnouncer: LiveAnnouncer,
+    public dialog: MatDialog,
+    private _snackBar: MatSnackBar
   ) { }
 
   @ViewChild(MatSort) sort!: MatSort;
 
-  displayedColumns: string[] = ['imie', 'nazwisko', 'msc_pracy', 'nazwa', 'status'];
+  displayedColumns: string[] = ['imie', 'nazwisko', 'data_rozpoczecia', 'nazwa', 'status'];
   TableData!: MatTableDataSource<TableRow>;
 
-  allEmployees$ = this.employeeService.getEmployees().subscribe(x => {
-    this.TableData = new MatTableDataSource<TableRow>(x as unknown[] as TableRow[])
-  })
+  getEmployees() {
+    this.employeeService.getEmployees().subscribe(x => {
+      this.TableData = new MatTableDataSource<TableRow>(x as unknown[] as TableRow[])
+      this.TableData.sort = this.sort;
+    })
+  }
 
   ngOnInit(): void {
+    this.getEmployees()
   }
 
   announceSortChange(sortState: Sort) {
@@ -37,12 +46,33 @@ export class EmployeesComponent implements OnInit {
     }
   }
 
+  openAddDialog(): void {
+    const dialogRef = this.dialog.open(AddEmployeeComponent, {
+      width: '250px',
+      data: {},
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        console.log(result);
+
+        this.employeeService.addEmployee(result)
+          .then((r) => (this.openSnackBar("Pomyślnie dodano", "Ok", "green"), this.getEmployees()))
+          .catch(e => (this.openSnackBar("Wystąpił błąd", "Ok", "red"), console.log(e)))
+      }
+    });
+  }
+
+  openSnackBar(message: string, action: string, cssClass: "green" | "red") {
+    this._snackBar.open(message, action, { panelClass: cssClass });
+  }
+
 }
 
 interface TableRow {
   imie: string;
   nazwisko: number;
-  msc_pracy: number;
+  data_rozpoczecia: Date;
   nazwa: string;
   status: boolean;
 }

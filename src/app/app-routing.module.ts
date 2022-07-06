@@ -1,3 +1,5 @@
+import { EditEmployeeComponent } from './components/employees/components/edit-employee/edit-employee.component';
+import { PositionComponent } from './components/positions/components/position/position.component';
 import { PositionsComponent } from './components/positions/positions.component';
 import { EmployeesComponent } from './components/employees/employees.component';
 import { AuthGuard } from './guards/auth.guard';
@@ -12,7 +14,9 @@ const routes: Routes = [
     path: '', component: DashboardComponent, canActivate: [AuthGuard], children: [
       { path: '', component: EmployeesComponent },
       { path: 'employees', component: EmployeesComponent },
+      { path: 'employees/:id', component: EditEmployeeComponent },
       { path: 'positions', component: PositionsComponent },
+      { path: 'positions/:id', component: PositionComponent },
     ]
   }
 ];

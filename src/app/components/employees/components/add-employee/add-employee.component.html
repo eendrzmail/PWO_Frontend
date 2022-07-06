@@ -1,0 +1,30 @@
+<h1 mat-dialog-title>Dodaj Pracownika</h1>
+<div mat-dialog-content>
+
+  <p>Nazwa</p>
+  <mat-form-field appearance="fill">
+    <mat-label>Nazwa</mat-label>
+    <input matInput [(ngModel)]="employee.imie" placeholder="Nazwa">
+  </mat-form-field>
+
+  <p>Nazwisko</p>
+  <mat-form-field appearance="fill">
+    <mat-label>Pensja</mat-label>
+    <input matInput [(ngModel)]="employee.nazwisko" placeholder="Nazwisko">
+  </mat-form-field>
+
+  <p>Stanowisko</p>
+  <mat-form-field appearance="fill">
+    <mat-label>Stanowisko</mat-label>
+    <mat-select [(ngModel)]="employee.id_stanowiska">
+      <mat-option *ngFor="let position of allPositions$ | async" [value]="position.id">
+        {{position.nazwa}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Anuluj</button>
+  <button mat-raised-button color="warn" [mat-dialog-close]="employee" cdkFocusInitial>Dodaj</button>
+</div>

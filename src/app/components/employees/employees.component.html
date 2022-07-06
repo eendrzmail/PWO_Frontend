@@ -6,7 +6,7 @@
     <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by Imie">
       Imię
     </th>
-    <td mat-cell *matCellDef="let element"> {{element.imie}} </td>
+    <td mat-cell *matCellDef="let element" routerLink="/employees/{{element.id}}"> {{element.imie}} </td>
   </ng-container>
 
   <!-- Name Column -->
@@ -14,15 +14,15 @@
     <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by name">
       Nazwisko
     </th>
-    <td mat-cell *matCellDef="let element"> {{element.nazwisko}} </td>
+    <td mat-cell *matCellDef="let element" routerLink="/employees/{{element.id}}"> {{element.nazwisko}} </td>
   </ng-container>
 
   <!-- Weight Column -->
-  <ng-container matColumnDef="msc_pracy">
+  <ng-container matColumnDef="data_rozpoczecia">
     <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by weight">
       Miesiące pracy
     </th>
-    <td mat-cell *matCellDef="let element"> {{element.msc_pracy}} </td>
+    <td mat-cell *matCellDef="let element" routerLink="/employees/{{element.id}}">{{ element.data_rozpoczecia | date }}</td>
   </ng-container>
 
   <!-- Symbol Column -->
@@ -30,16 +30,19 @@
     <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by symbol">
       Stanowisko
     </th>
-    <td mat-cell *matCellDef="let element"> {{element.nazwa}} </td>
+    <td mat-cell *matCellDef="let element" routerLink="/employees/{{element.id}}"> {{element.nazwa}} </td>
   </ng-container>
 
   <ng-container matColumnDef="status">
     <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by symbol">
       Status
     </th>
-    <td mat-cell *matCellDef="let element"> {{element.status}} </td>
+    <td mat-cell *matCellDef="let element" routerLink="/employees/{{element.id}}"> {{element.status}} </td>
   </ng-container>
 
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>
+
+
+<button mat-raised-button (click)="openAddDialog()">Dodaj Stanowisko</button>
