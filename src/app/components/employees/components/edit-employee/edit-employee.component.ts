@@ -33,6 +33,7 @@ export class EditEmployeeComponent implements OnInit {
   updateEmployee() {
     if (!this.employee)
       return
+    this.employee.status == !!this.employee.status
     this.employeeService.updateEmployee(this.employee)
       .then((r) => (this.openSnackBar("Pomyślnie dodano", "Ok", "green"), this.router.navigateByUrl("/employees")))
       .catch(e => (this.openSnackBar("Wystąpił błąd", "Ok", "red"), console.log(e)))

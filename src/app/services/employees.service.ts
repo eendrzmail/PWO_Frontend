@@ -25,6 +25,6 @@ export class EmployeesService {
   }
 
   updateEmployee(employee: EmployeePOST) {
-    return this.http.post(`https://prac-wyt-opr-backend.herokuapp.com/api/employees/`, employee).toPromise()
+    return this.http.put(`https://prac-wyt-opr-backend.herokuapp.com/api/employees/`, employee).toPromise()
   }
 }
