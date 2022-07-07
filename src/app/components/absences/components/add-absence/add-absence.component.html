@@ -1,0 +1,38 @@
+
+<div class="position">
+    <h1>Dodaj Urlop</h1>
+    <h2 routerLink="/employees/{{absence.employee_id}}">
+        {{employee.imie}} {{employee.nazwisko}}
+    </h2>
+    <br/>
+
+    <mat-form-field appearance="fill">
+        <mat-label>Typ</mat-label>
+        <mat-select [(ngModel)]="absence.absence_type">
+            <mat-option *ngFor="let a of absenceTypes$ | async" [value]="a.absenceType_id">
+            {{a.name}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+    
+    <mat-form-field appearance="fill">
+        <mat-label>Od</mat-label>
+        <input matInput [matDatepicker]="picker" [(ngModel)]="absence.absence_from">
+        <mat-hint>MM-DD-YYYY</mat-hint>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    
+    <mat-form-field appearance="fill">
+        <mat-label>Do</mat-label>
+        <input matInput [matDatepicker]="picker2" [(ngModel)]="absence.absence_to">
+        <mat-hint>MM-DD-YYYY</mat-hint>
+        <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+        <mat-datepicker #picker2></mat-datepicker>
+    </mat-form-field>
+
+    <div class="buttons">
+        <button mat-raised-button routerLink="/positions">Wróć</button>
+        <button mat-raised-button (click)="save()" >Zapisz</button>
+    </div>
+</div>

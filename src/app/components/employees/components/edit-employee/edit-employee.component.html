@@ -1,9 +1,10 @@
 <div class="position" *ngIf="employee">
+    <h1>Edycja Pracownika</h1>
     <mat-form-field>
-        <input matInput placeholder="Nazwa" [(ngModel)]="this.employee.imie">
+        <input matInput placeholder="Imię" [(ngModel)]="this.employee.imie">
     </mat-form-field>
     <mat-form-field>
-        <input matInput placeholder="Nazwa" [(ngModel)]="this.employee.nazwisko">
+        <input matInput placeholder="Nazwisko" [(ngModel)]="this.employee.nazwisko">
     </mat-form-field>
 
     <mat-form-field appearance="fill">
@@ -28,5 +29,15 @@
     <div class="buttons">
         <button mat-raised-button routerLink="/employees">Wróć</button>
         <button mat-raised-button (click)="updateEmployee()" >Zapisz</button>
+    </div>
+</div>
+<div class="absences">
+    <div style="display:flex; gap: 10px; justify-content: center; align-items: flex-start;">
+        <h1>Urlopy</h1>
+        <button mat-raised-button routerLink="/absences/add/{{employee.id}}">Dodaj urlop</button>
+    </div>
+    <div class="urlop" *ngFor="let item of employeeAbsences$ | async as absences">
+        {{item.absence_type | absenceTypePipe:absenceTypes}}
+        {{item.absence_from | date}} - {{item.absence_to | date}}
     </div>
 </div>

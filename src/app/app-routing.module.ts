@@ -1,3 +1,6 @@
+import { AddAbsenceComponent } from './components/absences/components/add-absence/add-absence.component';
+import { AbsenceComponent } from './components/absences/components/absence/absence.component';
+import { AbsencesComponent } from './components/absences/absences.component';
 import { EditEmployeeComponent } from './components/employees/components/edit-employee/edit-employee.component';
 import { PositionComponent } from './components/positions/components/position/position.component';
 import { PositionsComponent } from './components/positions/positions.component';
@@ -17,6 +20,9 @@ const routes: Routes = [
       { path: 'employees/:id', component: EditEmployeeComponent },
       { path: 'positions', component: PositionsComponent },
       { path: 'positions/:id', component: PositionComponent },
+      { path: 'absences', component: AbsencesComponent },
+      { path: 'absences/:id', component: AbsenceComponent },
+      { path: 'absences/add/:id', component: AddAbsenceComponent },
     ]
   }
 ];

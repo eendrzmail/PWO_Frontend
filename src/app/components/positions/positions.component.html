@@ -1,3 +1,6 @@
+<button mat-raised-button (click)="openAddDialog()">Dodaj Stanowisko</button>
+
+
 <table mat-table [dataSource]="TableData" matSort (matSortChange)="announceSortChange($event)"
     class="mat-elevation-z8">
 
@@ -17,5 +20,3 @@
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>
-
-<button mat-raised-button (click)="openAddDialog()">Dodaj Stanowisko</button>

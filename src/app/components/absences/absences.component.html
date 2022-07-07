@@ -1,14 +1,12 @@
-<button mat-raised-button (click)="openAddDialog()">Dodaj Stanowisko</button>
-
 <table mat-table [dataSource]="TableData" matSort (matSortChange)="announceSortChange($event)"
-    class="mat-elevation-z8">
+    class="mat-elevation-z8" *ngIf="absenceTypes">
 
   <!-- Position Column -->
   <ng-container matColumnDef="imie">
     <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by Imie">
       Imię
     </th>
-    <td mat-cell *matCellDef="let element" routerLink="/employees/{{element.id}}"> {{element.imie}} </td>
+    <td mat-cell *matCellDef="let element" [state]="element" routerLink="/absences/{{element.id}}"> {{element.imie}} </td>
   </ng-container>
 
   <!-- Name Column -->
@@ -16,30 +14,30 @@
     <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by name">
       Nazwisko
     </th>
-    <td mat-cell *matCellDef="let element" routerLink="/employees/{{element.id}}"> {{element.nazwisko}} </td>
+    <td mat-cell *matCellDef="let element" [state]="element" routerLink="/absences/{{element.id}}"> {{element.nazwisko}} </td>
   </ng-container>
 
   <!-- Weight Column -->
-  <ng-container matColumnDef="data_rozpoczecia">
+  <ng-container matColumnDef="absence_from">
     <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by weight">
-      Miesiące pracy
+        Od
     </th>
-    <td mat-cell *matCellDef="let element" routerLink="/employees/{{element.id}}">{{ element.data_rozpoczecia | date }}</td>
+    <td mat-cell *matCellDef="let element" [state]="element" routerLink="/absences/{{element.id}}">{{ element.absence_from | date }}</td>
   </ng-container>
 
   <!-- Symbol Column -->
-  <ng-container matColumnDef="nazwa">
+  <ng-container matColumnDef="absence_to">
     <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by symbol">
-      Stanowisko
+        DO
     </th>
-    <td mat-cell *matCellDef="let element" routerLink="/employees/{{element.id}}"> {{element.nazwa}} </td>
+    <td mat-cell *matCellDef="let element" [state]="element" routerLink="/absences/{{element.id}}"> {{element.absence_to | date}} </td>
   </ng-container>
 
-  <ng-container matColumnDef="status">
+  <ng-container matColumnDef="absence_type">
     <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by symbol">
-      Status
+        Typ
     </th>
-    <td mat-cell *matCellDef="let element" routerLink="/employees/{{element.id}}"> {{element.status ? "Aktywny" : "Nieaktywny"}} </td>
+    <td mat-cell *matCellDef="let element" [state]="element" routerLink="/absences/{{element.id}}"> {{element.absence_type | absenceTypePipe:absenceTypes}}</td>
   </ng-container>
 
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

@@ -17,6 +17,11 @@ import { AddPositionComponent } from './components/positions/components/add-posi
 import { PositionComponent } from './components/positions/components/position/position.component';
 import { AddEmployeeComponent } from './components/employees/components/add-employee/add-employee.component';
 import { EditEmployeeComponent } from './components/employees/components/edit-employee/edit-employee.component';
+import { BonusesComponent } from './components/bonuses/bonuses.component';
+import { AbsencesComponent } from './components/absences/absences.component';
+import { AbsenceTypePipePipe } from './pipes/absence-type-pipe.pipe';
+import { AbsenceComponent } from './components/absences/components/absence/absence.component';
+import { AddAbsenceComponent } from './components/absences/components/add-absence/add-absence.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +33,12 @@ import { EditEmployeeComponent } from './components/employees/components/edit-em
     AddPositionComponent,
     PositionComponent,
     AddEmployeeComponent,
-    EditEmployeeComponent
+    EditEmployeeComponent,
+    BonusesComponent,
+    AbsencesComponent,
+    AbsenceTypePipePipe,
+    AbsenceComponent,
+    AddAbsenceComponent
   ],
   imports: [
     BrowserModule,
