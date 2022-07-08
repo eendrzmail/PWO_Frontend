@@ -1,7 +1,9 @@
 import { absenceTYPE } from './../../../../models/absence';
+import { Bonus } from './../../../../models/bonus';
 import { AbsencesService } from './../../../../services/absences.service';
 import { Observable } from 'rxjs';
 import { PositionsService } from './../../../../services/positions.service';
+import { BonusesService } from './../../../../services/bonuses.service';
 import { EmployeePOST } from './../../../../models/employee';
 import { EmployeesService } from './../../../../services/employees.service';
 import { Component, OnInit } from '@angular/core';
@@ -21,6 +23,7 @@ export class EditEmployeeComponent implements OnInit {
     private employeeService: EmployeesService,
     private positionsService: PositionsService,
     private absenceService: AbsencesService,
+    private bonusesService: BonusesService,
     private _snackBar: MatSnackBar,
     private router: Router
   ) { }
@@ -29,6 +32,7 @@ export class EditEmployeeComponent implements OnInit {
   allPositions$ = this.positionsService.getPositions()
   employeeAbsences$!: Observable<Absence[]>;
   absenceTypes!: absenceTYPE[]
+  employeeBonuses$!: Observable<Bonus[]>;
 
 
   ngOnInit(): void {
@@ -40,7 +44,7 @@ export class EditEmployeeComponent implements OnInit {
       this.employeeService.getEmployee(x.id).subscribe(x => {
         this.employee = x
         this.employeeAbsences$ = this.absenceService.getEmployeeAbsences(x.id)
-        console.log(this.employee);
+        this.employeeBonuses$ = this.bonusesService.getEmployeeBonuses(x.id)
       })
     })
   }

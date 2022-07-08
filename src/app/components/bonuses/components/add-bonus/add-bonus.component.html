@@ -1,0 +1,20 @@
+<div class="position">
+
+    <mat-form-field appearance="fill">
+        <mat-label>Kwota</mat-label>
+        <input matInput [(ngModel)]="bonus.value" placeholder="Kwota" type="number">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+        <mat-label>Data przyznania</mat-label>
+        <input matInput [matDatepicker]="picker" [(ngModel)]="bonus.bonus_date">
+        <mat-hint>MM-DD-YYYY</mat-hint>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <div class="buttons">
+        <button mat-raised-button routerLink="/employees/{{id}}">Wróć</button>
+        <button mat-raised-button (click)="add()" >Zapisz</button>
+    </div>
+</div>

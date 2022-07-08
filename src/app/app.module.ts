@@ -22,6 +22,7 @@ import { AbsencesComponent } from './components/absences/absences.component';
 import { AbsenceTypePipePipe } from './pipes/absence-type-pipe.pipe';
 import { AbsenceComponent } from './components/absences/components/absence/absence.component';
 import { AddAbsenceComponent } from './components/absences/components/add-absence/add-absence.component';
+import { AddBonusComponent } from './components/bonuses/components/add-bonus/add-bonus.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { AddAbsenceComponent } from './components/absences/components/add-absenc
     AbsencesComponent,
     AbsenceTypePipePipe,
     AbsenceComponent,
-    AddAbsenceComponent
+    AddAbsenceComponent,
+    AddBonusComponent
   ],
   imports: [
     BrowserModule,

@@ -7,6 +7,7 @@ import { PositionsComponent } from './components/positions/positions.component';
 import { EmployeesComponent } from './components/employees/employees.component';
 import { AuthGuard } from './guards/auth.guard';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { AddBonusComponent } from './components/bonuses/components/add-bonus/add-bonus.component';
 import { LoginComponent } from './components/login/login.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -23,6 +24,7 @@ const routes: Routes = [
       { path: 'absences', component: AbsencesComponent },
       { path: 'absences/:id', component: AbsenceComponent },
       { path: 'absences/add/:id', component: AddAbsenceComponent },
+      { path: 'bonuses/add/:id', component: AddBonusComponent },
     ]
   }
 ];

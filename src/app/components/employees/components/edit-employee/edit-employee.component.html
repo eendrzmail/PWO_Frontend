@@ -31,6 +31,7 @@
         <button mat-raised-button (click)="updateEmployee()" >Zapisz</button>
     </div>
 </div>
+
 <div class="absences">
     <div style="display:flex; gap: 10px; justify-content: center; align-items: flex-start;">
         <h1>Urlopy</h1>
@@ -39,5 +40,15 @@
     <div class="urlop" *ngFor="let item of employeeAbsences$ | async as absences">
         {{item.absence_type | absenceTypePipe:absenceTypes}}
         {{item.absence_from | date}} - {{item.absence_to | date}}
+    </div>
+</div>
+
+<div class="bonuses">
+    <div style="display:flex; gap: 10px; justify-content: center; align-items: flex-start;">
+        <h1>Bonusy</h1>
+        <button mat-raised-button routerLink="/bonuses/add/{{employee.id}}">Daj Bonus</button>
+    </div>
+    <div class="urlop" *ngFor="let item of employeeBonuses$ | async as Bonus">
+        {{item.value}} - {{item.bonus_date | date}}
     </div>
 </div>
