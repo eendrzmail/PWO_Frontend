@@ -30,6 +30,10 @@ nav {
                 background-color: rgb(85, 85, 85);
             }
 
+            &:last-child {
+                margin-top: auto;
+            }
         }
+
     }
 }
